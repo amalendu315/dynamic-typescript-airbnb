@@ -6,12 +6,12 @@ import ListingCard from "./components/Listings/ListingCard";
 import { getCurrentUser } from "./actions/getCurrentUser";
 
 interface HomeProps{
-  searchParams:IListingsParams;
+  searchParams:IListingsParams | null;
 }
 
 const Home = async ({searchParams}:HomeProps) => {
 
-  const listings = await getListings(searchParams);
+  const listings = await getListings(searchParams as IListingsParams);
   const currentUser = await getCurrentUser();
 
   if (listings.length === 0) {
